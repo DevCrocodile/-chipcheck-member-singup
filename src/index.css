@@ -1,0 +1,14 @@
+html{
+  min-width: 100vw;
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  background-color: #4e4e4e;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
