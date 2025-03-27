@@ -1,4 +1,5 @@
 import React from "react"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../Card/Card'
 import '../tailwind.css'
 
 interface SignupFormProps {
@@ -7,8 +8,20 @@ interface SignupFormProps {
 
 export function SignupForm({ children }: SignupFormProps) {
     return (
-        <form action="" className="bg-white py-2">
-            {children}
-        </form>
+        <Card>
+            <CardHeader>
+                <CardTitle>
+                    Registro de usuario
+                </CardTitle>
+                <CardDescription>
+                    Ingresa tu informacion
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <form action="">
+                    {children}
+                </form>
+            </CardContent>
+        </Card>
     )
 }
