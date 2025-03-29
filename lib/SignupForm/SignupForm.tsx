@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../Card/Card'
 import { useField } from '../hooks/useField'
+import { useSelect } from '../hooks/useSelect'
 import { Button } from '../Button/Button'
 import { useMultistepForm } from '../hooks/useMultiStepForm'
 import { ProgressBar } from '../ProgressBar/ProgressBar'
@@ -15,12 +16,14 @@ export function SignupForm() {
     const confirmPassword = useField({ type: 'password' })
     const firstName = useField({ type: 'text' })
     const lastName = useField({ type: 'text' })
+    const sex = useSelect({ options: [{ value: "1", label: "Hombre" }, { value: "2", label: "Mujer" }] })
     const birthDate = useField({ type: 'date' })
+    const branch = useSelect({ options: [{ value: "1", label: "Sucursal 1" }, { value: "2", label: "Sucursal 2" }] })
 
     const { step, isFisrtStep, back, next, isLastStep, currentStepIndex, steps } = useMultistepForm([
         <AccountForm email={email} password={password} confirmPassword={confirmPassword} />,
-        <PersonalInfoForm firstName={firstName} lastName={lastName} birthDate={birthDate} />,
-        <SubscriptionForm />
+        <PersonalInfoForm firstName={firstName} lastName={lastName} birthDate={birthDate} sex={sex} />,
+        <SubscriptionForm branch={branch} />
     ])
     return (
         <Card className='min-h-[500px]'>
@@ -39,7 +42,6 @@ export function SignupForm() {
             <CardContent>
                 <form action="">
                     {step}
-
                 </form>
             </CardContent>
             <CardFooter>

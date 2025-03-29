@@ -1,13 +1,14 @@
-export function SubscriptionForm() {
+import { SelectFieldProps } from "../types"
+import { Select } from "../Input/Select";
+
+interface SubscriptionFormProps {
+    branch: SelectFieldProps;
+}
+
+export function SubscriptionForm({ branch }: SubscriptionFormProps) {
     return (
         <div>
-            <div className="flex flex-col gap-2 mb-5">
-                <label className="text-sm font-medium">Sucursal</label>
-                <select name="branch" className='flex h-10 rounded-md border border-slate-200 px-3 py-2 text-sm focus:outline-blue-400'>
-                    <option value="Tabachines">Tabachines</option>
-                    <option value="Diana Laura">Diana Laura</option>
-                </select>
-            </div>
+            <Select field={branch} label="Sucursal" name="branch" />
             <div className='flex flex-col justify-between gap-2'>
                 <div className='flex items-start p-3 border border-slate-200 rounded-md gap-2 hover:border-slate-300'>
                     <input type="radio" name='subscription' className='mt-2' />

@@ -1,11 +1,6 @@
-import React from 'react';
 import { Input } from '../Input/Input';
+import { FieldProps } from "../types";
 
-interface FieldProps {
-    value: string | undefined;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    type: string;
-}
 interface AccountFormProps {
     email: FieldProps;
     password: FieldProps;
