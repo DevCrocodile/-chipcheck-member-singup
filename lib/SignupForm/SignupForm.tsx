@@ -3,6 +3,7 @@ import { Input } from '../Input/Input'
 import { useField } from '../hooks/useField'
 import { Button } from '../Button/Button'
 import { useMultistepForm } from '../hooks/useMultiStepForm'
+import { ProgressBar } from '../ProgressBar/ProgressBar'
 import '../tailwind.css'
 
 
@@ -12,7 +13,8 @@ export function SignupForm() {
     const firstName = useField({ type: 'text' })
     const lastName = useField({ type: 'text' })
     const birthDate = useField({ type: 'date' })
-    const { step, isFisrtStep, back, next, isLastStep } = useMultistepForm([
+
+    const { step, isFisrtStep, back, next, isLastStep, currentStepIndex, steps } = useMultistepForm([
         <div>
             <Input field={email} label='Correo electrónico' placeholder='name@example.com' />
             <Input field={password} label='Contraseña' placeholder='●●●●●●●●' />
@@ -32,9 +34,12 @@ export function SignupForm() {
             </div>
             <Input field={birthDate} label="Fecha de nacimiento" placeholder="DD/MM/AAAA" />
         </div>,
+        <div>
+
+        </div>
     ])
     return (
-        <Card className='h-[465px]'>
+        <Card className='h-[500px]'>
             <CardHeader>
                 <CardTitle>
                     Registro de usuario
@@ -42,6 +47,10 @@ export function SignupForm() {
                 <CardDescription>
                     Ingresa tu informacion
                 </CardDescription>
+                <ProgressBar
+                    currentStep={currentStepIndex + 1}
+                    totalSteps={steps.length}
+                />
             </CardHeader>
             <CardContent>
                 <form action="">
