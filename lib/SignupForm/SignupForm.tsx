@@ -39,8 +39,8 @@ export function SignupForm() {
         <SubscriptionForm branch={branch} subscription={subscription} />
     ])
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const handleSubmit = () => {
+
         if (!isLastStep) return next()
         const formData = {
             email: email.value,
@@ -49,6 +49,7 @@ export function SignupForm() {
             firstName: firstName.value,
             lastName: lastName.value,
             birthDate: birthDate.value,
+            sex: sex.value,
             branch: branch.value,
             subscription: subscription.value,
         }
@@ -75,7 +76,7 @@ export function SignupForm() {
             </CardContent>
             <CardFooter>
                 {!isFisrtStep ? <Button onClick={back}>Regresar</Button> : <div></div>}
-                <Button color='black' onClick={next}>
+                <Button color='black' onClick={handleSubmit}>
                     {!isLastStep ? "Siguiente" : "Enviar"}
                 </Button>
             </CardFooter>
