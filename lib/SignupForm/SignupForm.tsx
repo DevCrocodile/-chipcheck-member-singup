@@ -1,45 +1,29 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../Card/Card'
-import { Input } from '../Input/Input'
 import { useField } from '../hooks/useField'
 import { Button } from '../Button/Button'
 import { useMultistepForm } from '../hooks/useMultiStepForm'
 import { ProgressBar } from '../ProgressBar/ProgressBar'
+import { AccountForm } from './AccountForm'
+import { PersonalInfoForm } from './PersonalInfoForm'
+import { SubscriptionForm } from './SubscriptionForm'
 import '../tailwind.css'
 
 
 export function SignupForm() {
     const email = useField({ type: 'email' })
     const password = useField({ type: 'password' })
+    const confirmPassword = useField({ type: 'password' })
     const firstName = useField({ type: 'text' })
     const lastName = useField({ type: 'text' })
     const birthDate = useField({ type: 'date' })
 
     const { step, isFisrtStep, back, next, isLastStep, currentStepIndex, steps } = useMultistepForm([
-        <div>
-            <Input field={email} label='Correo electrónico' placeholder='name@example.com' />
-            <Input field={password} label='Contraseña' placeholder='●●●●●●●●' />
-        </div>,
-        <div>
-            <div className="flex gap-4">
-                <Input field={firstName} label="Nombre" placeholder="Luis" />
-                <Input field={lastName} label="Apellidos" placeholder="García" />
-
-            </div>
-            <div className="flex flex-col gap-2 mb-5">
-                <label className="text-sm font-medium">Género</label>
-                <select name="sex" className='flex h-10 rounded-md border border-slate-200 px-3 py-2 text-sm focus:outline-blue-400'>
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                </select>
-            </div>
-            <Input field={birthDate} label="Fecha de nacimiento" placeholder="DD/MM/AAAA" />
-        </div>,
-        <div>
-
-        </div>
+        <AccountForm email={email} password={password} confirmPassword={confirmPassword} />,
+        <PersonalInfoForm firstName={firstName} lastName={lastName} birthDate={birthDate} />,
+        <SubscriptionForm />
     ])
     return (
-        <Card className='h-[500px]'>
+        <Card className='min-h-[500px]'>
             <CardHeader>
                 <CardTitle>
                     Registro de usuario
@@ -59,7 +43,7 @@ export function SignupForm() {
                 </form>
             </CardContent>
             <CardFooter>
-                {!isFisrtStep && <Button onClick={back}>Regresar</Button>}
+                {!isFisrtStep ? <Button onClick={back}>Regresar</Button> : <div></div>}
                 <Button color='black' onClick={next}>
                     {!isLastStep ? "Siguiente" : "Enviar"}
                 </Button>
