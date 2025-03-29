@@ -1,11 +1,14 @@
 import React from "react"
-
+import clsx from "clsx"
+import { twMerge } from "tailwind-merge"
 interface CardProps {
-    children: React.ReactNode
+    children: React.ReactNode,
+    className?: string
 }
-export function Card({ children }: CardProps) {
+export function Card({ children, className }: CardProps) {
+    const baseStyles = "rounded-lg border border-slate-500/20 shadow-sm w-[450px] bg-white flex flex-col"
     return (
-        <div className="rounded-lg border border-slate-500/20 shadow-sm min-w-[350px] bg-white">
+        <div className={twMerge(clsx(baseStyles, className))}>
             {children}
         </div>
     )
@@ -45,7 +48,7 @@ interface CardContentProps {
 }
 export function CardContent({ children }: CardContentProps) {
     return (
-        <main className="p-6 pt-0">
+        <main className="p-6 pt-0 flex-2">
             {children}
         </main>
     )
@@ -57,7 +60,7 @@ interface CardFooterProps {
 
 export function CardFooter({ children }: CardFooterProps) {
     return (
-        <footer className="p-6 pt-0">
+        <footer className="p-6 pt-0 flex justify-between">
             {children}
         </footer>
     )

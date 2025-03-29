@@ -4,9 +4,7 @@ function App() {
 
   return (
     <>
-      <SignupForm>
-        hola
-      </SignupForm>
+      <SignupForm />
     </>
   )
 }
