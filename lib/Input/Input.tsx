@@ -1,11 +1,8 @@
-import React from 'react'
+import { FieldProps } from '../types'
 import clsx from 'clsx'
+
 interface InputProps {
-    field: {
-        type: string,
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-        value: string | undefined
-    }
+    field: FieldProps
     placeholder: string,
     label: string
     errorMessage?: string
