@@ -1,0 +1,20 @@
+[
+    {
+        "id": "77543563-08d6-49b6-a3ff-fab2190a08b3",
+        "name": "Plan Mensual",
+        "price": 450,
+        "description": "Incluye acceso a todas las instalaciones y clases grupales."
+    },
+    {
+        "id": "23ea4ea9-e3ae-471e-bdec-4f19206dac87",
+        "name": "Plan Semestral",
+        "price": 400,
+        "description": "Incluye acceso a todas las instalaciones y clases grupales."
+    },
+    {
+        "id": "0d24be7d-30eb-4733-9aeb-a615d74fc752",
+        "name": "Plan Anual",
+        "price": 350,
+        "description": "Incluye acceso a todas las instalaciones y clases grupales."
+    }
+]

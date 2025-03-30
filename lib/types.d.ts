@@ -10,13 +10,6 @@ export interface SelectFieldProps {
     options: { value: string; label: string }[];
 }
 
-export interface Subscription {
-    id: string;
-    plan: string;
-    price: number;
-    description: string;
-}
-
 export interface RadioFieldProps {
     value: string | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

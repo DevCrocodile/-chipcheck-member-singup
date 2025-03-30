@@ -1,16 +1,27 @@
-import { useState } from "react"
-import type { Subscription } from "../types"
+import { useState, useEffect } from "react"
 
 interface UseRadioGroupProps {
-    options: Subscription[];
+    options: {
+        id: string;
+        name: string;
+        price: number;
+        description: string;
+    }[];
+    defaultValue?: string;
 }
 
-export function useRadioGroup({ options }: UseRadioGroupProps) {
-    const [value, setValue] = useState<string | undefined>(options[0].id)
+export function useRadioGroup({ options, defaultValue }: UseRadioGroupProps) {
+    const [value, setValue] = useState<string | undefined>(defaultValue)
+
+    useEffect(() => {
+        if (defaultValue) {
+            setValue(defaultValue)
+        }
+    }, [defaultValue])
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
 
-    return { value, onChange, options }
+    return { value, onChange, options, defaultValue }
 }

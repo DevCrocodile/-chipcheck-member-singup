@@ -50,11 +50,13 @@ export function SignupForm() {
             setFormErrors({})
             return next()
         }
+
         const finalResult = validateSignup(formData)
         if (!finalResult.success) {
             setFormErrors(finalResult.error.flatten().fieldErrors)
             return
         }
+        console.log("Formulario enviado", formData)
         alert("Formulario enviado")
     }
     return (
@@ -71,7 +73,7 @@ export function SignupForm() {
                     totalSteps={steps.length}
                 />
             </CardHeader>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <CardContent>
                     {step}
                 </CardContent>
