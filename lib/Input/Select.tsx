@@ -1,12 +1,14 @@
 import { SelectFieldProps } from '../types';
+import clsx from 'clsx';
 
 interface SelectProps {
     label: string;
     name: string;
-    field: SelectFieldProps
+    field: SelectFieldProps;
+    errorMessage?: string
 }
 
-export function Select({ field, label, name }: SelectProps) {
+export function Select({ field, label, name, errorMessage }: SelectProps) {
     return (
         <div className="flex flex-col gap-2 mb-5">
             <label className="text-sm font-medium">{label}</label>
@@ -17,6 +19,9 @@ export function Select({ field, label, name }: SelectProps) {
                     </option>
                 ))}
             </select>
+            <div className={clsx(errorMessage ? "h-3.5" : "h-0", "transition-all duration-200")}>
+                {errorMessage && <p className="text-sm text-red-300">{errorMessage}</p>}
+            </div>
         </div>
     )
 }

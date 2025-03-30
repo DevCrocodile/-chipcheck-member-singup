@@ -11,6 +11,7 @@ export interface SelectFieldProps {
 }
 
 export interface Subscription {
+    id: string;
     plan: string;
     price: number;
     description: string;

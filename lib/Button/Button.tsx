@@ -25,10 +25,11 @@ export interface ButtonProps {
     disabled?: boolean,
     className?: string,
     onClick?: () => void,
-    color?: keyof typeof solidColors
+    color?: keyof typeof solidColors,
+    type?: "button" | "submit" | "reset"
 }
 
-export function Button({ children, variant = "solid", size = "md", disabled = false, className, onClick, color = "white" }: ButtonProps) {
+export function Button({ children, variant = "solid", size = "md", disabled = false, className, onClick, color = "white", type = 'button' }: ButtonProps) {
 
     const baseStyles = "rounded-md font-medium transition-all duration-200 flex items-center shadow justify-center"
 
@@ -45,7 +46,7 @@ export function Button({ children, variant = "solid", size = "md", disabled = fa
         : "cursor-pointer"
 
     return (
-        <button className={twMerge(clsx(baseStyles, sizeStyles, disabledStyles, variantStyles), className)} disabled={disabled} onClick={onClick}>
+        <button type={type} className={twMerge(clsx(baseStyles, sizeStyles, disabledStyles, variantStyles), className)} disabled={disabled} onClick={onClick}>
             {children}
         </button>
     )

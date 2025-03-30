@@ -6,7 +6,7 @@ interface UseRadioGroupProps {
 }
 
 export function useRadioGroup({ options }: UseRadioGroupProps) {
-    const [value, setValue] = useState<string | undefined>(undefined)
+    const [value, setValue] = useState<string | undefined>(options[0].id)
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
