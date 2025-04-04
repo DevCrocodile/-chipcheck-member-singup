@@ -4,7 +4,7 @@ import { useRadioGroup } from '../hooks/useRadioGroup'
 import { useFetchBranches } from './useFetchBranches'
 import { useFetchSubscriptions } from './useFetchSubscriptions'
 
-export function useForm() {
+export function useForm({ businessId }:{ businessId:string }) {
     const email = useField({ type: 'email' })
     const password = useField({ type: 'password' })
     const confirmPassword = useField({ type: 'password' })
@@ -13,7 +13,7 @@ export function useForm() {
     const sex = useSelect({ options: [{ value: "1", label: "Hombre" }, { value: "2", label: "Mujer" }], defaultValue: "1" })
     const birthDate = useField({ type: 'date' })
 
-    const { branches, loadingBranches } = useFetchBranches()
+    const { branches, loadingBranches } = useFetchBranches({ businessId })
     const branch = useSelect({
         options: loadingBranches
             ? []
@@ -21,11 +21,11 @@ export function useForm() {
         defaultValue: loadingBranches ? undefined : branches[0].id
     })
 
-    const { subscriptions, loadingSubscriptions } = useFetchSubscriptions()
+    const { subscriptions, loadingSubscriptions } = useFetchSubscriptions({businessId})
     const subscription = useRadioGroup({
         options: loadingSubscriptions
             ? []
-            : subscriptions.map(({ id, name, description, price }) => ({ id, value: id, name, description, price })),
+            : subscriptions.map(({ id, name, description, price }) => ({ id, value: id, name, description, price:price/100 })),
 
         defaultValue: loadingSubscriptions ? undefined : subscriptions[0].id
     })

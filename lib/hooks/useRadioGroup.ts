@@ -12,7 +12,7 @@ interface UseRadioGroupProps {
 
 export function useRadioGroup({ options, defaultValue }: UseRadioGroupProps) {
     const [value, setValue] = useState<string | undefined>(defaultValue)
-
+    
     useEffect(() => {
         if (defaultValue) {
             setValue(defaultValue)

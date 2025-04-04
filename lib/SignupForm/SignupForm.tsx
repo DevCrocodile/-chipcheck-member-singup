@@ -11,7 +11,7 @@ import { useState } from 'react'
 import '../tailwind.css'
 
 
-export function SignupForm() {
+export function SignupForm({ businessId }: { businessId: string }) {
     const validations = [
         validateAccount,
         validatePersonalInfo,
@@ -19,7 +19,7 @@ export function SignupForm() {
     ]
     const [formErrors, setFormErrors] = useState<Partial<FormErrors>>({})
 
-    const { email, password, confirmPassword, firstName, lastName, birthDate, sex, branch, subscription } = useForm()
+    const { email, password, confirmPassword, firstName, lastName, birthDate, sex, branch, subscription } = useForm({ businessId })
 
     const { step, isFisrtStep, back, next, isLastStep, currentStepIndex, steps } = useMultistepForm([
         <AccountForm email={email} password={password} confirmPassword={confirmPassword} errors={formErrors} />,
